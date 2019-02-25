@@ -1,0 +1,28 @@
+[
+  {
+    "name":"YB",
+    "type": "REPORT",
+    "id": 1,
+    "categoryId": 1001,
+    "url": "https://datastudio.google.com/embed/reporting/1g-IbQtEevcLRZmhZDmiIVu8Ern1_QBTw/page/K1ui"
+  }, {
+    "name": "Sample",
+    "type": "REPORT",
+    "id": 2,
+    "categoryId": 1002,
+    "url": "https://datastudio.google.com/embed/reporting/1IDgDq563p6Ijz83Pi8ZhM5n8VBm8HQU4/page/dv5i"
+  }, {
+    "name": "Fruits",
+    "type": "REPORT",
+    "id": 3,
+    "categoryId": 1002,
+    "url": "https://datastudio.google.com/embed/reporting/1kwRIeVu9QB7RqQQ-jXfCItbi8izbuq7Y/page/fx5i"
+  },{
+    "name":"BP",
+    "type": "GSHEET",
+    "id": 4,
+    "categoryId": 1003,
+    "url": ""
+  }
+
+]

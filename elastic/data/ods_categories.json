@@ -1,0 +1,39 @@
+[
+  {
+    "name": "Urban Environment",
+    "heb_name": "סביבה עירונית",
+    "description": "Recreation and leisure spots, city's population sorted by age, neighborhood and more",
+    "heb_description": "מקומות הבילוי והעניין בעיר, אוכלוסיית העיר על פי גיל ושכונת מגורים",
+    "id": 1001
+  }, {
+    "name": "Geography",
+    "heb_name": "גאוגרפיה",
+    "description": "Public transportation stations and lines now and in the future, closed roads and city's maps",
+    "heb_description": "תחנות וקווי תחבורה ציבורית, רחובות סגורים לתנועה וכל המפות העירוניות",
+    "id": 1002
+  }, {
+    "name": "Transport",
+    "heb_name": "תחבורה",
+    "description": "Ahuzot Hahof parking lots, Tel-O-Fun's stations, closed roads",
+    "heb_description": "חניוני אחוזות החוף, תחנות תל-אופן, רחובות סגורים לתנועה",
+    "id": 1003
+  }, {
+    "name": "Housing & Development",
+    "heb_name": "דיור",
+    "description": "Dwelling units sorted by years, quarters and neighborhoods",
+    "heb_description":"יחידות דיור בתל-אביב-יפו, בחלוקה על-פי שכונות ושנים",
+    "id": 1004
+  }, {
+    "name": "Education & Culture",
+    "heb_name": "חינוך תרבות וספורט",
+    "description": "Schools, sports halls, libraries, kindergartens, pools and more",
+    "heb_description": "בתיספר, אולמות ספורט, ספריות, גני ילדים ועוד",
+    "id": 1005
+  }, {
+    "name": "City Government",
+    "heb_name": "עיר ועירייה",
+    "description": "Municipal bylaws and open positions in city hall",
+    "heb_description": "חוקי העזר העירוניים ומשרות פנויות בעירייה",
+    "id": 1006
+  }
+]

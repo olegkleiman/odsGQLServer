@@ -1,0 +1,32 @@
+{
+  "name": "odsGQLServer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-flow"
+    ]
+  },
+  "scripts": {
+    "debug": "nodemon ./src/server.js --exec babel-node --inspect-brk --mock",
+    "start": "nodemon ./src/server.js --exec babel-node --mock",
+    "setupElastic": "babel-node ./elastic/set_mappings.js && babel-node ./elastic/load_data.js"
+  },
+  "dependencies": {
+    "@babel/core": "^7.3.3",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "apollo-server": "^2.4.6",
+    "casual": "^1.6.0",
+    "dataloader": "^1.4.0",
+    "elastic-builder": "^2.2.2",
+    "elasticsearch": "^15.4.1",
+    "graphql": "^14.1.1",
+    "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "@babel/preset-flow": "^7.0.0"
+  }
+}

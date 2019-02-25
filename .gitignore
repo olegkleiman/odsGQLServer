@@ -1,0 +1,7 @@
+node_modules/
+dist/*.js
+schemas/*.graphql
+src/__generated__/*.js
+src/components/__generated__/
+.DS_Store
+yarn-error.log
