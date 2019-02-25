@@ -32,9 +32,6 @@ const _findBy = async(field, ...values) => {
     });
     const dataSetsByCategoryId = _.groupBy(dataSets, field);
 
-    // return Promise.resolve(values.map( val =>
-    //   dataSetsByCategoryId[val] || []
-    // ));
     return values.map( val =>
       dataSetsByCategoryId[val] || []
     );
@@ -81,6 +78,7 @@ export const resolvers = {
               return {
                 id: hit._id,
                 name: hit._source.name,
+                heb_name: hit._source.heb_name,
                 type: hit._source.type,
                 url: hit._source.url
               }
@@ -139,9 +137,7 @@ export const resolvers = {
     },
 
     DataSet: {
-      heb_name: (parent) => {
-        return parent.name;
-      }
+
     },
 
     Category: {

@@ -2,8 +2,8 @@ import client from './connection.js';
 const elasticCategoriesIndexName = 'ods_categories';
 const elasticDatasetsIndexName = 'ods_datasets';
 
-import _categories from './ods_categories.json';
-import _datasets from './ods_datasets.json';
+import _categories from './data/ods_categories.json';
+import _datasets from './data/ods_datasets.json';
 
 const process = () => {
 

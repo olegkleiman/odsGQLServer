@@ -1,24 +1,28 @@
 [
   {
-    "name":"YB",
+    "name":"City Population",
+    "heb_name":"אוכלוסיית העיר 2016-2009",
     "type": "REPORT",
     "id": 1,
     "categoryId": 1001,
     "url": "https://datastudio.google.com/embed/reporting/1g-IbQtEevcLRZmhZDmiIVu8Ern1_QBTw/page/K1ui"
   }, {
-    "name": "Sample",
+    "name": "GIS Maps",
+    "heb_name":"מפות GIS",
     "type": "REPORT",
     "id": 2,
     "categoryId": 1002,
     "url": "https://datastudio.google.com/embed/reporting/1IDgDq563p6Ijz83Pi8ZhM5n8VBm8HQU4/page/dv5i"
   }, {
-    "name": "Fruits",
+    "name": "Tel O-Fun",
+    "heb_name":"תל אופן",
     "type": "REPORT",
     "id": 3,
     "categoryId": 1002,
     "url": "https://datastudio.google.com/embed/reporting/1kwRIeVu9QB7RqQQ-jXfCItbi8izbuq7Y/page/fx5i"
   },{
-    "name":"BP",
+    "name":"Events",
+    "heb_name":"אירועים",
     "type": "GSHEET",
     "id": 4,
     "categoryId": 1003,
