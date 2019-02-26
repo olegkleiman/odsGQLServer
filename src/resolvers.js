@@ -80,7 +80,10 @@ export const resolvers = {
                 name: hit._source.name,
                 heb_name: hit._source.heb_name,
                 type: hit._source.type,
-                url: hit._source.url
+                url: hit._source.url,
+                data_url: hit._source.data_url,
+                description: hit._source.description,
+                heb_description: hit._source.heb_description
               }
           })
       },
@@ -99,7 +102,10 @@ export const resolvers = {
           name: response._source.name,
           type: response._source.type,
           categoryIds: [response._source.categoryId],
-          url: response._source.url
+          url: response._source.url,
+          data_url: response._source.data_url,
+          description: response._source.description,
+          heb_description: response._source.heb_description
         };
       },
       categories: async (_, args, context, info) => {

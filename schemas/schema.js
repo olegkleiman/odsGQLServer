@@ -21,6 +21,9 @@ const typeDefs = gql`
     type: DataSetType
     categoryIds: [Int]
     url: String
+    data_url: String
+    description: String
+    heb_description: String
   }
 
   type Category implements INode {

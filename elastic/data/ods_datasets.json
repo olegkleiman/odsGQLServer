@@ -2,31 +2,43 @@
   {
     "name":"City Population",
     "heb_name":"אוכלוסיית העיר 2016-2009",
+    "description": "Population distribution by city neighborhoods",
+    "heb_description": "אומדן למספר תושבי העיר לפי שכונות ולפי קבוצות גיל מקובצות. הנתונים נכונים לסוף השנה האחרונה. מקור: למ``ס",
     "type": "REPORT",
     "id": 1,
     "categoryId": 1001,
-    "url": "https://datastudio.google.com/embed/reporting/1g-IbQtEevcLRZmhZDmiIVu8Ern1_QBTw/page/K1ui"
+    "url": "https://datastudio.google.com/embed/reporting/1g-IbQtEevcLRZmhZDmiIVu8Ern1_QBTw/page/K1ui",
+    "data_url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbl1_BfkW1vszIRj_4zl2UmMVmJ0oORshGoY3tS8QILUf6cvR7nJEprkqD8EwXgEIB1245I42A5_C-/pubhtml?gid=1745515845&amp;single=true&amp;widget=true&amp;headers=false"
   }, {
     "name": "GIS Maps",
     "heb_name":"מפות GIS",
+    "description": "Maps of Tel-Aviv-Yafo, including layers of parking zones, hotels, boundaries, transportation, social services, health, culture and more",
+    "heb_description": "מאגר נתונים הכולל עשרות שכבות גאוגרפיות עירוניות בנושאים שונים: חינוך, תנועה, רווחה, בריאות, תרבות, חרום ועוד.",
     "type": "REPORT",
     "id": 2,
     "categoryId": 1002,
-    "url": "https://datastudio.google.com/embed/reporting/1IDgDq563p6Ijz83Pi8ZhM5n8VBm8HQU4/page/dv5i"
+    "url": "https://datastudio.google.com/embed/reporting/1IDgDq563p6Ijz83Pi8ZhM5n8VBm8HQU4/page/dv5i",
+    "data_url": ""
   }, {
     "name": "Tel O-Fun",
     "heb_name":"תל אופן",
+    "description": "Live map of Tel-Aviv bike sharing stations",
+    "heb_description": "מפה מקוונת של תחנות תל אופן",
     "type": "REPORT",
     "id": 3,
     "categoryId": 1002,
-    "url": "https://datastudio.google.com/embed/reporting/1kwRIeVu9QB7RqQQ-jXfCItbi8izbuq7Y/page/fx5i"
+    "url": "https://datastudio.google.com/embed/reporting/1kwRIeVu9QB7RqQQ-jXfCItbi8izbuq7Y/page/fx5i",
+    "data_url": ""
   },{
     "name":"Events",
     "heb_name":"אירועים",
+    "description": "Upcoming Events in Tel-Aviv-Yafo",
+    "heb_description": "אירועים ומופעים. בנתונים אלו ניתן לצפות על גבי המפה, אך לא ניתן להורידם",
     "type": "GSHEET",
     "id": 4,
     "categoryId": 1003,
-    "url": ""
+    "url": "",
+    "data_url": ""
   }
 
 ]

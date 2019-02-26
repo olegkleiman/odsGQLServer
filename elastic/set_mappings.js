@@ -82,7 +82,10 @@ const process = async () => {
                "heb_description": {"type": "text"},
                "categoryId": { "type": "short" },
                "id": { "type": "short"},
-               "url" : { "type": "keyword" }
+               "url" : { "type": "keyword" },
+               "data_url": { "type": "keyword" },
+               "description": { "type": "text" },
+               "heb_description": { "type": "text" }
            }
          }
     });
