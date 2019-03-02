@@ -1,11 +1,12 @@
 import { gql } from 'apollo-server';
 
 const typeDefs = gql`
+
+  scalar DateTime
+
   interface INode  {
     id: ID!
   }
-
-  scalar Date
 
   enum DataSetType {
     REPORT
@@ -31,6 +32,7 @@ const typeDefs = gql`
     data_url: String
     description: String
     heb_description: String
+    whenPublished: DateTime
   }
 
   type Category implements INode {

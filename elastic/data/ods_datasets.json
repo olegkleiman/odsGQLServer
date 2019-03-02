@@ -16,7 +16,8 @@
         "url": "https://datastudio.google.com/embed/reporting/1g-IbQtEevcLRZmhZDmiIVu8Ern1_QBTw/page/K1ui"
       }
     ],
-    "data_url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbl1_BfkW1vszIRj_4zl2UmMVmJ0oORshGoY3tS8QILUf6cvR7nJEprkqD8EwXgEIB1245I42A5_C-/pubhtml?gid=1745515845&amp;single=true&amp;widget=true&amp;headers=false"
+    "data_url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbl1_BfkW1vszIRj_4zl2UmMVmJ0oORshGoY3tS8QILUf6cvR7nJEprkqD8EwXgEIB1245I42A5_C-/pubhtml?gid=1745515845&amp;single=true&amp;widget=true&amp;headers=false",
+    "whenPublished": "2019-01-14"
   },
   { "name": "GIS Maps",
     "heb_name":"מפות GIS",
@@ -30,7 +31,8 @@
       "heb_name": "דוח",
       "url": "https://datastudio.google.com/embed/reporting/1IDgDq563p6Ijz83Pi8ZhM5n8VBm8HQU4/page/dv5i"
     }],
-    "data_url": ""
+    "data_url": "",
+    "whenPublished": "2019-02-14"
   }, {
     "name": "Tel O-Fun",
     "heb_name":"תל אופן",
@@ -44,7 +46,8 @@
       "heb_name": "דוח",
       "url": "https://datastudio.google.com/embed/reporting/1kwRIeVu9QB7RqQQ-jXfCItbi8izbuq7Y/page/fx5i"
     }],
-    "data_url": ""
+    "data_url": "",
+    "whenPublished": "2018-02-14"
   },{
     "name":"Events",
     "heb_name":"אירועים",
@@ -58,7 +61,8 @@
       "heb_name": "דוח",
       "url": ""
     }],
-    "data_url": ""
+    "data_url": "",
+    "whenPublished": "2018-03-14"
   }
 
 ]

@@ -62,6 +62,7 @@ elasticClient.cluster.health({}, function(err, resp, status) {
 })
 
 export const resolvers = {
+
     Query: {
       datasets: async(_, args, context, info) => {
 
@@ -83,7 +84,8 @@ export const resolvers = {
                 visualizations: hit._source.visualizations,
                 data_url: hit._source.data_url,
                 description: hit._source.description,
-                heb_description: hit._source.heb_description
+                heb_description: hit._source.heb_description,
+                whenPublished: hit._source.whenPublished
               }
           })
       },
@@ -105,7 +107,8 @@ export const resolvers = {
           visualizations: response._source.visualizations,
           data_url: response._source.data_url,
           description: response._source.description,
-          heb_description: response._source.heb_description
+          heb_description: response._source.heb_description,
+          whenPublished: response._source.whenPublished
         };
       },
       categories: async (_, args, context, info) => {

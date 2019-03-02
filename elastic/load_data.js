@@ -38,7 +38,8 @@ const process = () => {
              data_url: dataset.data_url,
              description: dataset.description,
              heb_description: dataset.heb_description,
-             visualizations: dataset.visualizations
+             visualizations: dataset.visualizations,
+             whenPublished: dataset.whenPublished
         };
         // console.log(body);
 

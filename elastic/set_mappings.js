@@ -100,7 +100,8 @@ const process = async () => {
                     }
                    }
                  }
-               }
+               },
+               "whenPublished": { "type": "date" }
            }
          }
     });
