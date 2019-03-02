@@ -10,7 +10,7 @@ const typeDefs = gql`
 
   enum DataSetType {
     REPORT
-    GSHEET
+    COMPOUND
     API
   }
 
