@@ -85,7 +85,22 @@ const process = async () => {
                "url" : { "type": "keyword" },
                "data_url": { "type": "keyword" },
                "description": { "type": "text" },
-               "heb_description": { "type": "text" }
+               "heb_description": { "type": "text" },
+               "visualizations" : {
+                 "properties": {
+                   "name": { "type": "text" },
+                   "heb_name": { "type": "text" },
+                   "url": {
+                     "type": "text",
+                     "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                    }
+                   }
+                 }
+               }
            }
          }
     });

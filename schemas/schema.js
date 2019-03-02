@@ -13,6 +13,12 @@ const typeDefs = gql`
     API
   }
 
+  type DataSetVisualization {
+    name: String!
+    heb_name: String!
+    url: String
+  }
+
   type DataSet implements INode {
     id: ID!
 
@@ -21,6 +27,7 @@ const typeDefs = gql`
     type: DataSetType
     categoryIds: [Int]
     url: String
+    visualizations: [DataSetVisualization]
     data_url: String
     description: String
     heb_description: String
@@ -31,14 +38,20 @@ const typeDefs = gql`
 
     name: String!
     heb_name: String!
+    description: String
+    heb_description: String
     datasets: [DataSet]
   }
+
+  union SearchResult = DataSet | Category
 
   type Query {
     datasets: [DataSet]
     dataset(id: ID!): DataSet
     categories: [Category]
     category(id: ID!): Category
+
+    search(contains: String!): [SearchResult]
   }
 `;
 

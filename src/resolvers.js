@@ -80,7 +80,7 @@ export const resolvers = {
                 name: hit._source.name,
                 heb_name: hit._source.heb_name,
                 type: hit._source.type,
-                url: hit._source.url,
+                visualizations: hit._source.visualizations,
                 data_url: hit._source.data_url,
                 description: hit._source.description,
                 heb_description: hit._source.heb_description
@@ -102,14 +102,14 @@ export const resolvers = {
           name: response._source.name,
           type: response._source.type,
           categoryIds: [response._source.categoryId],
-          url: response._source.url,
+          visualizations: response._source.visualizations,
           data_url: response._source.data_url,
           description: response._source.description,
           heb_description: response._source.heb_description
         };
       },
       categories: async (_, args, context, info) => {
-        let requestBody = esb.requestBodySearch()
+        const requestBody = esb.requestBodySearch()
                           .query(
                               esb.matchAllQuery()
                           );
@@ -122,7 +122,9 @@ export const resolvers = {
               return {
                 id: hit._id,
                 heb_name: hit._source.heb_name,
-                name: hit._source.name
+                name: hit._source.name,
+                description: hit._source.description,
+                heb_description: hit._source.heb_description
               }
           })
       },
@@ -139,14 +141,43 @@ export const resolvers = {
           name: response._source.name,
           heb_name: response._source.heb_name
         };
+      },
+      search: async(_, {contains}, context, info) => {
+        const requestBody = esb.requestBodySearch()
+        .query(
+                esb.queryStringQuery(contains)
+        );
+
+        const response = await elasticClient.search({
+          index: [elasticIndexName, elasticDatasetsIndexName],
+          body: requestBody.toJSON()
+        });
+
+        const res = [];
+        response.hits.hits.map( hit => {
+          res.push(hit._source);
+        });
+
+        return res;
       }
     },
 
     DataSet: {
+      __isTypeOf: (obj) => {
+        if( obj.type ) // this property (type) is specific for DataSet
+          return "DataSet";
 
+        return null;
+      }
     },
 
     Category: {
+      __isTypeOf: (obj) => {
+        if( !obj.type )
+          return "Category";
+
+        return null;
+      },
       datasets: async(parent) => {
 
         return await datasetsLoader.load(parent.id);
