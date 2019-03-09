@@ -165,6 +165,12 @@ export const resolvers = {
       }
     },
 
+    Mutation: {
+      addDataSet: function(_, {input}, context) {
+        console.log(input);
+      }
+    },
+
     DataSet: {
       __isTypeOf: (obj) => {
         if( obj.type ) // this property (type) is specific for DataSet

@@ -55,6 +55,15 @@ const typeDefs = gql`
 
     search(contains: String!): [SearchResult]
   }
+
+  input DataSetInput {
+    name: String!
+    heb_name: String!
+  }
+
+  type Mutation {
+    addDataSet(input: DataSetInput): Boolean
+  }
 `;
 
 export default typeDefs;
