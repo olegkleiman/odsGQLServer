@@ -47,11 +47,31 @@ const typeDefs = gql`
 
   union SearchResult = DataSet | Category
 
+  type PageInfo {
+    endCursor: String
+    startCursor: String
+    hasNextPage: Boolean
+    hasPreviousPage: Boolean
+  }
+
+  type DataSetEdge {
+    cursor: String!
+    node: DataSet
+  }
+
+  type DataSetsConnection {
+      edges: [DataSetEdge]!
+      pageInfo: PageInfo
+      totalCount: Int!
+  }
+
   type Query {
-    datasets: [DataSet]
+
     dataset(id: ID!): DataSet
     categories: [Category]
     category(id: ID!): Category
+
+    datasets(first: Int!, after: String) : DataSetsConnection
 
     search(contains: String!): [SearchResult]
   }

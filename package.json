@@ -20,6 +20,7 @@
     "@babel/preset-env": "^7.3.1",
     "apollo-server": "^2.4.6",
     "casual": "^1.6.0",
+    "crypto": "^1.0.1",
     "dataloader": "^1.4.0",
     "elastic-builder": "^2.2.2",
     "elasticsearch": "^15.4.1",

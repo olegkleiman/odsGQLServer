@@ -4,6 +4,7 @@ import DataLoader from 'dataloader';
 import elasticsearch from 'elasticsearch';
 import esb from 'elastic-builder';
 import casual from 'casual';
+import crypto from 'crypto';
 
 import _datasets from '../elastic/data/ods_datasets.json';
 
@@ -51,7 +52,7 @@ function isMockMode(): boolean {
 
 const esHost = isMockMode() ? 'localhost' : '10.1.70.47';
 var elasticClient = new elasticsearch.Client({
-  host: `${esHost}:9200`
+  host: `${esHost}:9200`,
   //log: 'trace'
   // selector: function (hosts) {
   // }
@@ -61,33 +62,52 @@ elasticClient.cluster.health({}, function(err, resp, status) {
   console.log("Elastic Health: ", resp);
 })
 
+const getCursor = (value) => {
+  return crypto.createHash('md5').update(value).digest('hex');
+}
+
 export const resolvers = {
 
     Query: {
-      datasets: async(_, args, context, info) => {
+      datasets: async(_, {first, after}, context, info) => {
 
-        let requestBody = esb.requestBodySearch()
-                          .query(
-                              esb.matchAllQuery()
-                          );
+        if( !after )
+          after = 0;
+
         const response = await elasticClient.search({
           index: elasticDatasetsIndexName,
-          type: 'doc',
-          body: requestBody.toJSON()
+          size: first,
+          sort: 'id:asc',
+          body: {
+            search_after: [after]
+          }
         });
-        return response.hits.hits.map( (hit) => {
-              return {
-                id: hit._id,
-                name: hit._source.name,
-                heb_name: hit._source.heb_name,
-                type: hit._source.type,
-                visualizations: hit._source.visualizations,
-                data_url: hit._source.data_url,
-                description: hit._source.description,
-                heb_description: hit._source.heb_description,
-                whenPublished: hit._source.whenPublished
-              }
-          })
+
+        let endCursor = '';
+        const edges = response.hits.hits.map( (hit) => {
+          endCursor = hit._source.id;
+          return {
+            cursor: hit._source.id,
+            node: hit._source
+          }
+        });
+        const totalCount = response.hits.total;
+        let startIndex = 0;
+        if( after ) {
+          startIndex += parseInt(after, 10);
+        }
+
+        const hasNextPage = first ? startIndex + first < totalCount
+                                  : false;
+        return {
+          edges: edges,
+          totalCount: totalCount,
+          pageInfo: {
+            endCursor: endCursor,
+            hasNextPage: hasNextPage
+          }
+        }
+
       },
       dataset: async (parent, {id}) => {
 
@@ -168,6 +188,7 @@ export const resolvers = {
     Mutation: {
       addDataSet: function(_, {input}, context) {
         console.log(input);
+        // elasticClient.index()
       }
     },
 
