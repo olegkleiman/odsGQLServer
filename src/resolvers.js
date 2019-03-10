@@ -186,9 +186,44 @@ export const resolvers = {
     },
 
     Mutation: {
-      addDataSet: function(_, {input}, context) {
+      addDataSet: async (_, {input}, context) => {
         console.log(input);
-        // elasticClient.index()
+
+        try {
+          const requestBody = esb.requestBodySearch()
+                              .agg(esb.maxAggregation('max_id', 'id'));
+          const response = await elasticClient.search({
+            index: elasticDatasetsIndexName,
+            size: 0,
+            body: requestBody
+          });
+          let maxId = parseInt(response.aggregations.max_id.value, 10);
+          maxId++;
+
+          const dataset = {
+            name: input.name,
+            heb_name: input.heb_name,
+            description: input.description,
+            heb_description: input.heb_description,
+            type: input.type,
+            id: maxId,
+            categoryIds: [input.categoryId]
+          };
+
+          const edge = {
+            cursor: maxId,
+            node: dataset
+          };
+
+          return {
+            dataSetEdge: edge,
+            clientMutationId: 234
+          }
+        } catch( err ) {
+          console.error(err);
+        }
+
+
       }
     },
 

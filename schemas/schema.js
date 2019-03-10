@@ -77,12 +77,24 @@ const typeDefs = gql`
   }
 
   input DataSetInput {
+    clientMutationId: String
+
     name: String!
     heb_name: String!
+    description: String!
+    heb_description: String!
+    type: String!
+    categoryId: Int!
+    whenPublished: DateTime
+  }
+
+  type AddDataSetPayload {
+    dataSetEdge: DataSetEdge!
+    clientMutationId: String
   }
 
   type Mutation {
-    addDataSet(input: DataSetInput): Boolean
+    addDataSet(input: DataSetInput): AddDataSetPayload
   }
 `;
 
