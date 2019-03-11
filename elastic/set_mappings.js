@@ -90,6 +90,7 @@ const process = async () => {
                  "properties": {
                    "name": { "type": "text" },
                    "heb_name": { "type": "text" },
+                   "id": { "type": "short"},
                    "url": {
                      "type": "text",
                      "fields": {

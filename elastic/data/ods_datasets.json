@@ -6,13 +6,15 @@
     "type": "REPORT",
     "id": 1,
     "categoryIds": [1001],
-    "visualizations": [ {
+    "visualizations": [{
         "name": "report",
         "heb_name": "דוח",
+        "id": 10011,
         "url": "https://datastudio.google.com/embed/reporting/1g-IbQtEevcLRZmhZDmiIVu8Ern1_QBTw/page/K1ui"
       }, {
         "name": "map",
         "heb_name": "מפה",
+        "id": 10012,
         "url": "https://datastudio.google.com/embed/reporting/1g-IbQtEevcLRZmhZDmiIVu8Ern1_QBTw/page/K1ui"
       }
     ],
@@ -26,9 +28,10 @@
     "type": "REPORT",
     "id": 2,
     "categoryIds": [1002],
-    "visualizations": [ {
+    "visualizations": [{
       "name": "report",
       "heb_name": "דוח",
+      "id": 10021,
       "url": "https://datastudio.google.com/embed/reporting/1IDgDq563p6Ijz83Pi8ZhM5n8VBm8HQU4/page/dv5i"
     }],
     "data_url": "",
@@ -44,6 +47,7 @@
     "visualizations": [ {
       "name": "report",
       "heb_name": "דוח",
+      "id": 10031,
       "url": "https://datastudio.google.com/embed/reporting/1kwRIeVu9QB7RqQQ-jXfCItbi8izbuq7Y/page/fx5i"
     }],
     "data_url": "",
@@ -56,9 +60,10 @@
     "type": "COMPOUND",
     "id": 4,
     "categoryIds": [1003],
-    "visualizations": [ {
+    "visualizations": [{
       "name": "report",
       "heb_name": "דוח",
+      "id": 10041,
       "url": ""
     }],
     "data_url": "",
