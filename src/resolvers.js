@@ -192,7 +192,7 @@ export const resolvers = {
         try {
           const requestBody = esb.requestBodySearch()
                               .agg(esb.maxAggregation('max_id', 'id'));
-          const response = await elasticClient.search({
+          let response = await elasticClient.search({
             index: elasticDatasetsIndexName,
             size: 0,
             body: requestBody
@@ -207,8 +207,17 @@ export const resolvers = {
             heb_description: input.heb_description,
             type: input.type,
             id: maxId,
-            categoryIds: [input.categoryId]
+            categoryIds: input.categoryIds,
+            whenPublished: input.whenPublished
           };
+
+          response = await elasticClient.index({
+            index: elasticDatasetsIndexName,
+            type: 'doc',
+            id: maxId,
+            body: dataset
+          })
+          console.log(response);
 
           const edge = {
             cursor: maxId,

@@ -14,10 +14,12 @@ const typeDefs = gql`
     API
   }
 
-  type DataSetVisualization {
-    name: String!
-    heb_name: String!
-    url: String
+  type DataSetVisualization implements INode {
+    id: ID!
+
+    name: String
+    heb_name: String
+    url: String!
   }
 
   type DataSet implements INode {
@@ -84,7 +86,7 @@ const typeDefs = gql`
     description: String!
     heb_description: String!
     type: String!
-    categoryId: Int!
+    categoryIds: [Int]
     whenPublished: DateTime
   }
 
