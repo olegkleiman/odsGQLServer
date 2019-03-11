@@ -11,7 +11,7 @@ import _datasets from '../elastic/data/ods_datasets.json';
 const elasticIndexName = 'ods_categories';
 const elasticDatasetsIndexName = 'ods_datasets';
 
-const datasetsLoader = new DataLoader(Ids => _findBy('categoryId', ...Ids),
+const datasetsLoader = new DataLoader(Ids => _findBy('categoryIds', ...Ids),
                                         { cache: false });
 
 const _findBy = async(field, ...values) => {
@@ -69,18 +69,28 @@ const getCursor = (value) => {
 export const resolvers = {
 
     Query: {
-      datasets: async(_, {first, after}, context, info) => {
+      datasets: async(_, {first, after, categoryId}, context, info) => {
+
+        let jsonRequestBody = {};
+        if( categoryId ) {
+          const requestBody = esb.requestBodySearch()
+                .query(
+                    esb.boolQuery()
+                    .filter(esb.termsQuery("categoryIds", [categoryId]))
+                );
+          jsonRequestBody = requestBody.toJSON();
+        }
 
         if( !after )
           after = 0;
+
+        jsonRequestBody.search_after = [after];
 
         const response = await elasticClient.search({
           index: elasticDatasetsIndexName,
           size: first,
           sort: 'id:asc',
-          body: {
-            search_after: [after]
-          }
+          body: jsonRequestBody
         });
 
         let endCursor = '';

@@ -5,7 +5,7 @@
     "heb_description": "אומדן למספר תושבי העיר לפי שכונות ולפי קבוצות גיל מקובצות. הנתונים נכונים לסוף השנה האחרונה. מקור: למ``ס",
     "type": "REPORT",
     "id": 1,
-    "categoryId": 1001,
+    "categoryIds": [1001],
     "visualizations": [ {
         "name": "report",
         "heb_name": "דוח",
@@ -25,7 +25,7 @@
     "heb_description": "מאגר נתונים הכולל עשרות שכבות גאוגרפיות עירוניות בנושאים שונים: חינוך, תנועה, רווחה, בריאות, תרבות, חרום ועוד.",
     "type": "REPORT",
     "id": 2,
-    "categoryId": 1002,
+    "categoryIds": [1002],
     "visualizations": [ {
       "name": "report",
       "heb_name": "דוח",
@@ -40,7 +40,7 @@
     "heb_description": "מפה מקוונת של תחנות תל אופן",
     "type": "REPORT",
     "id": 3,
-    "categoryId": 1002,
+    "categoryIds": [1002],
     "visualizations": [ {
       "name": "report",
       "heb_name": "דוח",
@@ -55,7 +55,7 @@
     "heb_description": "אירועים ומופעים. בנתונים אלו ניתן לצפות על גבי המפה, אך לא ניתן להורידם",
     "type": "COMPOUND",
     "id": 4,
-    "categoryId": 1003,
+    "categoryIds": [1003],
     "visualizations": [ {
       "name": "report",
       "heb_name": "דוח",
@@ -64,5 +64,4 @@
     "data_url": "",
     "whenPublished": "2018-03-14"
   }
-
 ]

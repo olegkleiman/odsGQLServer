@@ -32,7 +32,7 @@ const process = () => {
              type: dataset.type,
              description: dataset.description,
              heb_description: dataset.heb_description,
-             categoryId: dataset.categoryId,
+             categoryIds: dataset.categoryIds,
              id: dataset.id,
              url: dataset.url,
              data_url: dataset.data_url,

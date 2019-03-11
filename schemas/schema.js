@@ -73,7 +73,9 @@ const typeDefs = gql`
     categories: [Category]
     category(id: ID!): Category
 
-    datasets(first: Int!, after: String) : DataSetsConnection
+    datasets(first: Int!,
+             after: String,
+             categoryId: ID) : DataSetsConnection
 
     search(contains: String!): [SearchResult]
   }
