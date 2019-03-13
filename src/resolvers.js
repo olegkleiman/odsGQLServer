@@ -197,7 +197,6 @@ export const resolvers = {
 
     Mutation: {
       addDataSet: async (_, {input}, context) => {
-        console.log(input);
 
         try {
           const requestBody = esb.requestBodySearch()
