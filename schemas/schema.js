@@ -97,14 +97,14 @@ const typeDefs = gql`
     clientMutationId: String
   }
 
-  input UserValidation {
+  input UserValidationInput {
     email: String!
     role: String!
   }
 
   type Mutation {
     addDataSet(input: DataSetInput): AddDataSetPayload
-    validateUser(input: UserValidation): Boolean
+    validateUser(input: UserValidationInput): Boolean
   }
 `;
 
