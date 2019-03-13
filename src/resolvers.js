@@ -193,6 +193,14 @@ export const resolvers = {
         });
 
         return res;
+      },
+      validatedUsers: (_) => {
+        return [{
+            id: '000',
+            name: '',
+            email: [''],
+            role: ''
+        }];
       }
     },
 
@@ -214,10 +222,19 @@ export const resolvers = {
             body: requestBody.toJSON()
           });
 
-          return response.hits.total > 0 ? true : false;
+          if( response.hits.total > 0 ) {
+            return {
+              id: response.hits.hits[0]._id,
+              name: response.hits.hits[0]._source.name,
+              email: response.hits.hits[0]._source.email,
+              role: input.role
+            }
+          } else {
+            return null;
+          }
         } catch( err ) {
           console.error(err);
-          return false;
+          return {};
         }
       },
       addDataSet: async (_, {input}, context) => {

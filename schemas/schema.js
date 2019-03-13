@@ -67,6 +67,14 @@ const typeDefs = gql`
       totalCount: Int!
   }
 
+  type ValidatedUser implements INode {
+    id: ID!
+    
+    email: [String]!
+    name: String!
+    role: String!
+  }
+
   type Query {
 
     dataset(id: ID!): DataSet
@@ -78,6 +86,7 @@ const typeDefs = gql`
              categoryId: ID) : DataSetsConnection
 
     search(contains: String!): [SearchResult]
+    validatedUsers: [ValidatedUser]
   }
 
   input DataSetInput {
@@ -97,14 +106,14 @@ const typeDefs = gql`
     clientMutationId: String
   }
 
-  input UserValidationInput {
+  input UserInput {
     email: String!
     role: String!
   }
 
   type Mutation {
     addDataSet(input: DataSetInput): AddDataSetPayload
-    validateUser(input: UserValidationInput): Boolean
+    validateUser(input: UserInput): ValidatedUser
   }
 `;
 
