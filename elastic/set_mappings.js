@@ -1,16 +1,50 @@
 import client from './connection.js';
 
-let elasticIndexName = 'ods_categories';
-let elasticDatasetsIndexName = 'ods_datasets';
+const elasticIndexName = 'ods_categories';
+const elasticDatasetsIndexName = 'ods_datasets';
+const elasticIndexUsersName = 'ods_users';
 
 const process = async () => {
 
   try {
 
-    //debug();
+    // process users index
+    let isIndexExists = await client.indices.exists({
+      index: elasticIndexUsersName
+    });
+
+    if( isIndexExists ) {
+      console.log(`${elasticIndexUsersName} is already exists. Deleting...`);
+      await client.indices.delete({
+        index: elasticIndexUsersName,
+      });
+      console.log(`${elasticIndexUsersName} was deleted`);
+    }
+
+    console.log(`Creating ${elasticIndexUsersName} index`);
+    let resp = await client.indices.create({
+        index: elasticIndexUsersName,
+        // type: 'doc',
+        timeout: '10m',
+        body: { }
+      });
+    console.log(`${elasticIndexUsersName} is created`);
+    await client.indices.putMapping({
+        index: elasticIndexUsersName,
+        type: 'doc',
+        timeout: '10m',
+        body: {
+           "properties": {
+               "email" : { "type": "keyword" },
+               "name": { "type": "text"},
+               "role": {"type": "text"},
+           }
+         }
+    });
+    console.log(`${elasticIndexUsersName} is mapped`);
 
     // process categories index
-    let isIndexExists = await client.indices.exists({
+    isIndexExists = await client.indices.exists({
       index: elasticIndexName
     })
 
@@ -23,7 +57,7 @@ const process = async () => {
     }
 
     console.log(`Creating ${elasticIndexName} index`);
-    let resp = await client.indices.create({
+    resp = await client.indices.create({
         index: elasticIndexName,
         // type: 'doc',
         timeout: '10m',

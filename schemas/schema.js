@@ -97,8 +97,14 @@ const typeDefs = gql`
     clientMutationId: String
   }
 
+  input UserValidation {
+    email: String!
+    role: String!
+  }
+
   type Mutation {
     addDataSet(input: DataSetInput): AddDataSetPayload
+    validateUser(input: UserValidation): Boolean
   }
 `;
 

@@ -10,6 +10,7 @@ import _datasets from '../elastic/data/ods_datasets.json';
 
 const elasticIndexName = 'ods_categories';
 const elasticDatasetsIndexName = 'ods_datasets';
+const elasticIndexUsersName = 'ods_users';
 
 const datasetsLoader = new DataLoader(Ids => _findBy('categoryIds', ...Ids),
                                         { cache: false });
@@ -196,6 +197,29 @@ export const resolvers = {
     },
 
     Mutation: {
+
+      validateUser: async (_, {input}, context) => {
+
+        try {
+          const requestBody = esb.requestBodySearch().
+                  query(
+                  esb.boolQuery()
+                      .must(esb.termQuery('email', input.email))
+                      .filter(esb.termQuery('role', input.role))
+                  );
+
+          const response = await elasticClient.search({
+            index: elasticIndexUsersName,
+            type: 'doc',
+            body: requestBody.toJSON()
+          });
+
+          return response.hits.total > 0 ? true : false;
+        } catch( err ) {
+          console.error(err);
+          return false;
+        }
+      },
       addDataSet: async (_, {input}, context) => {
 
         try {
@@ -240,7 +264,6 @@ export const resolvers = {
         } catch( err ) {
           console.error(err);
         }
-
 
       }
     },

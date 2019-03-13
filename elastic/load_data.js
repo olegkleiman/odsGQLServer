@@ -1,13 +1,28 @@
 import client from './connection.js';
 const elasticCategoriesIndexName = 'ods_categories';
 const elasticDatasetsIndexName = 'ods_datasets';
+const elasticIndexUsersName = 'ods_users';
 
 import _categories from './data/ods_categories.json';
 import _datasets from './data/ods_datasets.json';
+import _users from './data/ods_users.json';
 
 const process = () => {
 
     try {
+
+      _users.map( async(item) => {
+        await client.index({
+          index: elasticIndexUsersName,
+          type: 'doc',
+          body: {
+            email: item.email,
+            name: item.name,
+            role: item.role
+          }
+        });
+      });
+
       _categories.map( async(item) => {
         await client.index({
           index: elasticCategoriesIndexName,
