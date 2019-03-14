@@ -69,7 +69,7 @@ const typeDefs = gql`
 
   type ValidatedUser implements INode {
     id: ID!
-    
+
     email: [String]!
     name: String!
     role: String!
@@ -106,14 +106,9 @@ const typeDefs = gql`
     clientMutationId: String
   }
 
-  input UserInput {
-    email: String!
-    role: String!
-  }
-
   type Mutation {
     addDataSet(input: DataSetInput): AddDataSetPayload
-    validateUser(input: UserInput): ValidatedUser
+    validateUserEmail(input: String): ValidatedUser
   }
 `;
 

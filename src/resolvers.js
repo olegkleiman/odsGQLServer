@@ -1,12 +1,12 @@
 // @flow
 import _ from 'lodash';
 import DataLoader from 'dataloader';
-import elasticsearch from 'elasticsearch';
 import esb from 'elastic-builder';
 import casual from 'casual';
 import crypto from 'crypto';
 
 import _datasets from '../elastic/data/ods_datasets.json';
+import { _elasticClient } from './utils';
 
 const elasticIndexName = 'ods_categories';
 const elasticDatasetsIndexName = 'ods_datasets';
@@ -42,26 +42,10 @@ const _findBy = async(field, ...values) => {
   }
 }
 
-function isMockMode(): boolean {
-
-  let mockToken = process.argv.find( (arg: string) => {
-    return arg === "--mock"
-  });
-
-  return mockToken;
-}
-
-const esHost = isMockMode() ? 'localhost' : '10.1.70.47';
-var elasticClient = new elasticsearch.Client({
-  host: `${esHost}:9200`,
-  //log: 'trace'
-  // selector: function (hosts) {
-  // }
-});
-
-elasticClient.cluster.health({}, function(err, resp, status) {
-  console.log("Elastic Health: ", resp);
-})
+const elasticClient = _elasticClient.getInstance();
+// elasticClient.cluster.health({}, function(err, resp, status) {
+//   console.log("Elastic Health: ", resp);
+// })
 
 const getCursor = (value) => {
   return crypto.createHash('md5').update(value).digest('hex');
@@ -206,32 +190,10 @@ export const resolvers = {
 
     Mutation: {
 
-      validateUser: async (_, {input}, context) => {
+      validateUserEmail: async (_, {input}, context) => {
 
         try {
-          const requestBody = esb.requestBodySearch().
-                  query(
-                  esb.boolQuery()
-                      .must(esb.termQuery('email', input.email))
-                      .filter(esb.termQuery('role', input.role))
-                  );
-
-          const response = await elasticClient.search({
-            index: elasticIndexUsersName,
-            type: 'doc',
-            body: requestBody.toJSON()
-          });
-
-          if( response.hits.total > 0 ) {
-            return {
-              id: response.hits.hits[0]._id,
-              name: response.hits.hits[0]._source.name,
-              email: response.hits.hits[0]._source.email,
-              role: input.role
-            }
-          } else {
-            return null;
-          }
+          return await _elasticClient.findUser(input);
         } catch( err ) {
           console.error(err);
           return {};
