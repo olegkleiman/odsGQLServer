@@ -44,7 +44,6 @@ const _elasticClient = (function elasticClient() {
           index: 'ods_users',
           body: requestBody.toJSON()
         });
-        console.log(response);
 
         return ( response.hits.total > 0 ) ?
           {
