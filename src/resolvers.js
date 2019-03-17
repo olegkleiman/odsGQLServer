@@ -1,4 +1,5 @@
 // @flow
+import { AuthenticationError } from 'apollo-server';
 import _ from 'lodash';
 import DataLoader from 'dataloader';
 import esb from 'elastic-builder';
@@ -200,6 +201,11 @@ export const resolvers = {
         }
       },
       addDataSet: async (_, {input}, context) => {
+
+        console.log(context);
+        if( !context.user ) {
+          throw new AuthenticationError('you must be logged in to add dataset');
+        }
 
         try {
           const requestBody = esb.requestBodySearch()

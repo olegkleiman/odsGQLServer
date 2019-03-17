@@ -44,6 +44,7 @@ const _elasticClient = (function elasticClient() {
           index: 'ods_users',
           body: requestBody.toJSON()
         });
+        console.log(response);
 
         return ( response.hits.total > 0 ) ?
           {
@@ -51,7 +52,12 @@ const _elasticClient = (function elasticClient() {
             role: response.hits.hits[0]._source.role,
             name: response.hits.hits[0]._source.name,
             id: response.hits.hits[0]._id
-          } : null;
+          } : {
+            id: '000',
+            name: '',
+            role: '',
+            email: [email]
+          };
 
       } catch( err ) {
         console.error(err);
