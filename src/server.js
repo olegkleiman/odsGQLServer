@@ -8,11 +8,40 @@ import typeDefs from '../schemas/schema.js';
 import { resolvers } from './resolvers';
 import { _elasticClient } from './utils';
 
+const keys = require('./tlvods.keys.json');
+
 const app = express();
 app.use(cors('*'));
 
-const GOOGLE_CLIENT_ID = '1049230588636-gprtqumhag54a8g4nlpu7d8pje0vpmak.apps.googleusercontent.com';
-const googleAuthclient = new OAuth2Client(GOOGLE_CLIENT_ID);
+const googleAuthclient = new OAuth2Client(keys.web.client_id,
+                                          keys.web.client_secret,
+                                          keys.web.redirect_uris);
+
+app.get('/auth/google/callback', (req, res) => {
+  console.log(req);
+})
+
+app.use('/x', async (req, res, next) => {
+
+  const code = req.headers['x-code'];
+
+  try {
+
+    const resp = await googleAuthclient.getToken(code);
+    const tokens = resp.tokens;
+    googleAuthclient.setCredentials(resp);
+
+    res.setHeader('Content-Type', 'application/json');
+    const jsonToken = {
+      id_token: tokens.id_token
+    }
+    res.send(JSON.stringify(jsonToken));
+  } catch( err ) {
+    console.error(err)
+    res.send(500);
+  }
+
+})
 
 app.use('/graphql', async (req, res, next) => {
 
@@ -27,7 +56,7 @@ app.use('/graphql', async (req, res, next) => {
       // May cause 'Token used too late'
       const ticket = await googleAuthclient.verifyIdToken({
         idToken: lexems[1],
-        audience: GOOGLE_CLIENT_ID
+        audience: keys.web.client_id
       });
 
       const _user = ticket.payload;
