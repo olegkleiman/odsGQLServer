@@ -14,7 +14,7 @@
       }, {
         "name": "map",
         "heb_name": "מפה",
-        "id": 10012,
+        "id": 10011,
         "url": "https://datastudio.google.com/embed/reporting/1g-IbQtEevcLRZmhZDmiIVu8Ern1_QBTw/page/K1ui"
       }
     ],
@@ -43,7 +43,7 @@
     "heb_description": "מפה מקוונת של תחנות תל אופן",
     "type": "REPORT",
     "id": 3,
-    "categoryIds": [1002],
+    "categoryIds": [1003],
     "visualizations": [ {
       "name": "report",
       "heb_name": "דוח",
@@ -59,14 +59,30 @@
     "heb_description": "אירועים ומופעים. בנתונים אלו ניתן לצפות על גבי המפה, אך לא ניתן להורידם",
     "type": "COMPOUND",
     "id": 4,
-    "categoryIds": [1003],
+    "categoryIds": [1001],
     "visualizations": [{
       "name": "report",
       "heb_name": "דוח",
-      "id": 10041,
+      "id": 10012,
       "url": ""
     }],
     "data_url": "",
     "whenPublished": "2018-03-14"
+  }, {
+    "name": "City Movements",
+    "heb_name": "ניידות בעיר",
+    "description": "",
+    "heb_description": "",
+    "type": "REPORT",
+    "id": 5,
+    "categoryIds": [1003],
+    "visualizations": [{
+        "name": "map",
+        "heb_name": "מפה",
+        "id": 10032,
+        "url": "http://localhost:8081/"
+    }],
+    "data_url": "",
+    "whenPublished": "2018-03-23"
   }
 ]

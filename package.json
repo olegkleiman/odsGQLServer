@@ -12,7 +12,7 @@
   "scripts": {
     "debug": "nodemon ./src/server.js --exec babel-node --inspect-brk --mock",
     "start": "nodemon ./src/server.js --exec babel-node --mock",
-    "setupElastic": "babel-node ./elastic/set_mappings.js && babel-node ./elastic/load_data.js"
+    "setup": "babel-node ./elastic/set_mappings.js && babel-node ./elastic/load_data.js"
   },
   "dependencies": {
     "@babel/core": "^7.3.3",
