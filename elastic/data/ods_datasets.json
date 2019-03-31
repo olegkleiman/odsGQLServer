@@ -69,9 +69,9 @@
     "data_url": "",
     "whenPublished": "2018-03-14"
   }, {
-    "name": "City Movements",
-    "heb_name": "ניידות בעיר",
-    "description": "",
+    "name": "Districts of the City",
+    "heb_name":"אוכלוסיית העיר 2016-2009",
+    "description": "Population of City's districts",
     "heb_description": "",
     "type": "REPORT",
     "id": 5,
@@ -80,9 +80,9 @@
         "name": "map",
         "heb_name": "מפה",
         "id": 10032,
-        "url": "http://localhost:8081/"
+        "url": "http://localhost:8082"
     }],
-    "data_url": "",
+    "data_url": "https://docs.google.com/spreadsheets/d/1GJWgz04VTdJIPT5y4N8qkY-fkNc3lvbxATv8TeC-deA/edit#gid=0",
     "whenPublished": "2018-03-23"
   }
 ]
